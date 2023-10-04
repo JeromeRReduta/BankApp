@@ -6,7 +6,7 @@ public class SimpleBankAccount implements BankAccount {
 
     private final static double MAX_DEBT_ALLOWED = -100.00;
 
-    private final String name;
+    private String name;
 
     private final int id;
 
@@ -35,6 +35,11 @@ public class SimpleBankAccount implements BankAccount {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

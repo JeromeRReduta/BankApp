@@ -1,0 +1,83 @@
+given some bank account model, generates a page onto console (similar to how html pages render content based on some underlying model)
+
+BankAccountController basic loop:
+	handles state and state transitions, as well as updating model when requested
+
+FINITE STATE MACHINE:
+
+LOGIN:
+	enter(account):
+		BANKINGTON BANKS:
+		Please enter username and password:
+
+	update():
+		Prompt for: username
+		Prompt for: password
+
+		Create a bank account with that username
+		-> menu state
+
+MENU:
+	enter(account):
+		You currently have $[?].
+		Please select a number:
+                [1] Deposit funds
+                [2] Withdraw
+                [3] Display bank details
+                [4] Exit
+	update():
+		Prompt for: option
+			1 -> deposit state
+			2 -> withdraw state
+			3 -> display state
+			4 -> exit state
+
+DEPOSIT:
+
+	enter(account):
+                You currently have $%.2f.
+                Please enter your deposit amount.
+		Enter 0 to go back to menu
+
+	update():
+		Prompt for: amount
+			account.deposit(amount)
+			-> menu state
+
+WITHDRAW:
+	enter(account):
+                You currently have $%.2f.
+                (You can borrow money, but there is a debt limit.)
+                Please enter your withdrawal amount.
+		Or enter 0 to go back to menu.
+
+	update():
+		Prompt for: amount
+			try {
+				account.withdraw(amount)
+			}
+			catch (InsufficientFundsException e) {
+				loop again
+			}
+		Once out of loop, -> menu state
+
+DISPLAY STATE
+	enter(account):
+                BANKINGTON BANKS ACCOUNT #%d
+                [%s]
+                $%.2f
+
+		Enter any input to go back to menu.
+
+	update():
+		Any input -> menu
+
+EXIT
+	enter(account):
+		You are now leaving Bankington Banks.
+                Goodbye!
+
+	update():
+		None - program ends after this state
+
+

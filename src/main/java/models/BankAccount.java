@@ -12,6 +12,8 @@ public interface BankAccount {
 
     String getName();
 
+    void setName(String name);
+
     Number getID();
 
     Number getMoney();
