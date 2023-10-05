@@ -4,12 +4,12 @@ import exceptions.InsufficientFundsException;
 import models.BankAccount;
 import utility.InputValidator;
 
-import java.text.NumberFormat;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+/**
+ * Implementation of a StateWithModel for BankAccounts.
+ */
 public interface BankAccountState extends StateWithModel<BankAccount> {
     Scanner scan = new Scanner(System.in);
 

@@ -1,19 +1,11 @@
 package states;
 
 import models.BankAccount;
-import models.SimpleBankAccount;
 
+/**
+ * Implementation of a state context with model for a bank account
+ */
 public class BankAccountStateContext implements StateContextWithModel<BankAccount> {
-
-    public static void main(String[] args) {
-        BankAccountStateContext context = new BankAccountStateContext(
-                BankAccountState.LOGIN,
-                new SimpleBankAccount(
-                        "Placeholder",
-                        5,
-                        0));
-        context.run();
-    }
 
     private final BankAccount account;
 

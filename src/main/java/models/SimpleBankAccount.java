@@ -2,6 +2,9 @@ package models;
 
 import exceptions.InsufficientFundsException;
 
+/**
+ * Simple implementation of a BankAccount
+ */
 public class SimpleBankAccount implements BankAccount {
 
     private final static double MAX_DEBT_ALLOWED = -100.00;

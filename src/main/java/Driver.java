@@ -2,6 +2,9 @@ import apps.App;
 import apps.SimpleBankApp;
 import configs.SimpleBankConfig;
 
+/**
+ * Driver class
+ */
 public class Driver {
 
     public static void main(String[] args) {
