@@ -1,6 +1,3 @@
-import exceptions.InsufficientFundsException;
-import models.BankAccount;
-import models.SimpleBankAccount;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -8,66 +5,62 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SimpleBankAccountTest {
+    String firstName = "John";
+    String lastName = "Doe";
+    Number id = 100;
+    Number age = 101;
+    Number funds = 102;
+    Number creditScore = 103;
+    public SimpleBankAccount getMockAccount() {
 
-    final static String mockName = "Bubba";
-    final static int mockID = 5;
-
-    final static double startingMoney = 0;
-
-    static BankAccount getMockBankAccount() {
         return new SimpleBankAccount(
-                mockName,
-                mockID,
-                startingMoney);
+                firstName,
+                lastName,
+                id,
+                age,
+                funds,
+                creditScore);
+    }
+
+
+    @Test
+    @DisplayName("Getter Test")
+    public void getterTest() {
+        BankAccount mockAccount = getMockAccount();
+        assertEquals(firstName + " " + lastName,
+                mockAccount.getFirstName() + " " + mockAccount.getLastName());
+        assertEquals(id,
+                mockAccount.getID());
+        assertEquals(age,
+                mockAccount.getAge());
+        assertEquals(funds,
+                mockAccount.getFunds());
+        assertEquals(creditScore,
+                mockAccount.getCreditScore());
+
     }
 
     @Test
-    @DisplayName("First")
-    public void initTest() {
-        BankAccount mockAccount = getMockBankAccount();
-        assertEquals(
-                mockID,
-                mockAccount.getID().intValue());
-        assertEquals(
-                mockName,
-                mockAccount.getName());
-        assertEquals(
-                startingMoney,
-                mockAccount.getMoney());
+    @DisplayName("Setter Test")
+    public void setterTest() {
+        /* TODO - write hte following tests:
+            set first name
+            set last name
+            est id
+            set funds
+            set credit score
+         */
     }
 
     @Test
-    @DisplayName("Second")
-    public void toStringTest() {
-        BankAccount mockAccount = getMockBankAccount();
-        String expectedString =
-                """
-                Bubba [5]:
-                $0.00
-                """;
-        assertEquals(
-                expectedString,
-                mockAccount.toString());
-    }
-
-    @Test
-    @DisplayName("Third")
+    @DisplayName("Add and subtract money test")
     public void updateMoneyTest() {
-        BankAccount mockAccount = getMockBankAccount();
-        mockAccount.deposit(500);
-        assertEquals(
-                500,
-                mockAccount.getMoney().intValue()
-        );
-        mockAccount.deposit(1000);
-        assertEquals(
-                1500,
-                mockAccount.getMoney().intValue()
-        );
-        assertThrows(
-                InsufficientFundsException.class,
-                () -> mockAccount.withdraw(1000000000));
-    }
+        /*
+        TODO - write the following tests/asserts:
+        add $100
+        subtract $1000
+         */
 
+    }
 
 }
